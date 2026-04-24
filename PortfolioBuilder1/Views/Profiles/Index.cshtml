@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PortfolioBuilder1.Models.Profile>
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center">Profile</h2>
+
+    <!-- Scrollable Table Area -->
+    <div style="height:350px; overflow-y:auto; border:1px solid #ccc;">
+        <table class="table table-bordered table-hover text-center">
+
+            <thead style="position:sticky; top:0; background:#212529; color:white;">
+        <tr>
+            <th>Select</th>
+            <th>FullName</th>
+            <th>Title</th>
+            <th>About</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Linkdin</th>
+            <th>GitHub</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" class="rowCheck" value="@item.Id" />
+                </td>
+                <td>@item.FullName</td>
+                <td>@item.Title</td>
+                <td>@item.About</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.LinkedIn</td>
+                <td>@item.GitHub</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+    <div class="d-flex justify-content-center mt-3 gap-2">
+    <button onclick="addProfile()" class="btn btn-primary">Add</button>
+    <button onclick="editProfile()" class="btn btn-warning">Edit</button>
+    <button onclick="viewProfile()" class="btn btn-info">Details</button>
+    <button onclick="deleteProfile()" class="btn btn-danger">Delete</button>
+</div>
+</div>
+<script>
+    function getId() {
+        var c = document.querySelector('.rowCheck:checked');
+        if (!c) { alert("Select profile"); return null; }
+        return c.value;
+    }
+
+    function addProfile() {
+        window.location.href = '/Profiles/Create';
+    }
+
+    function editProfile() {
+        var id = getId();
+        if (id) window.location.href = '/Profiles/Edit/' + id;
+    }
+
+    function viewProfile() {
+        var id = getId();
+        if (id) window.location.href = '/Profiles/Details/' + id;
+    }
+
+    function deleteProfile() {
+        var id = getId();
+        if (id) window.location.href = '/Profiles/Delete/' + id;
+    }
+</script>

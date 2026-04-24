@@ -1,0 +1,88 @@
+﻿@model PortfolioBuilder1.Models.Profile
+
+@{
+    ViewData["Title"] = "Create Profile";
+}
+
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h4>Create User</h4>
+                </div>
+@* <form asp-action="Create" method="post"> *@
+                <div class="card-body">
+
+<form asp-action="Create" method="post">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label"></label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="About" class="form-label"></label>
+                            <input asp-for="About" class="form-control" />
+                            <span asp-validation-for="About" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label"></label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LinkedIn" class="form-label"></label>
+                            <input asp-for="LinkedIn" class="form-control" />
+                            <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GitHub" class="form-label"></label>
+                            <input asp-for="GitHub" class="form-control" />
+                            <span asp-validation-for="GitHub" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="UserId" class="form-label"></label>
+                            <input asp-for="UserId" class="form-control" />
+                            <span asp-validation-for="UserId" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

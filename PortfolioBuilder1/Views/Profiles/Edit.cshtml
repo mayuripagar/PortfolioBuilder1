@@ -1,0 +1,84 @@
+﻿@model PortfolioBuilder1.Models.Profile
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h4>Edit User</h4>
+                </div>
+
+                <div class="card-body">
+
+                         <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="FullName" class="form-label"></label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label asp-for="About" class="form-label"></label>
+                            <input asp-for="About" class="form-control" />
+                            <span asp-validation-for="About" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label"></label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LinkedIn" class="form-label"></label>
+                            <input asp-for="LinkedIn" class="form-control" />
+                            <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GitHub" class="form-label"></label>
+                            <input asp-for="GitHub" class="form-control" />
+                            <span asp-validation-for="GitHub" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="UserId" class="form-label"></label>
+                            <input asp-for="UserId" class="form-control" />
+                            <span asp-validation-for="UserId" class="text-danger"></span>
+                        </div>
+
+                        <br />
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

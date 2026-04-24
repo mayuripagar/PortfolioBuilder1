@@ -1,0 +1,46 @@
+﻿@model PortfolioBuilder1.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 fw-bold">Dashboard</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-lg p-4 text-center">
+                <h5>👤 Profile</h5>
+                <p>Manage personal details</p>
+                <a asp-controller="Users" asp-action="Index"
+                   class="btn btn-primary">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg p-4 text-center">
+                <h5>💻 Skills</h5>
+                <p>Add and update skills</p>
+                <a asp-controller="Skills" asp-action="Index"
+                   class="btn btn-success">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg p-4 text-center">
+                <h5>📂 Projects</h5>
+                <p>Showcase your work</p>
+                <a asp-controller="Projects" asp-action="Index"
+                   class="btn btn-warning">
+                    Manage
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

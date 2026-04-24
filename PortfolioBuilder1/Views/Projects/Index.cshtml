@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PortfolioBuilder1.Models.Project>
+
+<div class="container mt-4">
+
+    <h2 class="text-center">Project</h2>
+
+    <!-- Scrollable Table Area -->
+    <div style="height:350px; overflow-y:auto; border:1px solid #ccc;">
+        <table class="table table-bordered table-hover text-center">
+            <colgroup>
+                <col style="width:60px;" /> <!-- select column width -->
+                <col />
+                <col />
+                <col />
+                <col />
+            </colgroup>
+
+            <thead style="position:sticky; top:0; background:#212529; color:white;">
+ 
+        <tr>
+          <th class="select-col">Select</th>
+          <th>Title</th>
+            <th>ProjectName</th>
+            <th>Description</th>
+            <th>Technology</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                        <td class="select-col">
+                            <input type="checkbox" class="rowCheck" value="@item.Id" />
+                        </td>
+                        <td>@item.Title</td>
+                <td>@item.ProjectName</td>
+                <td>@item.Description</td>
+                <td>@item.Technology</td>
+                <td>@item.Link</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+    <div class="d-flex justify-content-center mt-3 gap-2">
+    <button onclick="addProject()" class="btn btn-primary">Add</button>
+    <button onclick="editProject()" class="btn btn-warning">Edit</button>
+        <button onclick="DetailsProject()" class="btn btn-warning">Details</button>
+    <button onclick="deleteProject()" class="btn btn-danger">Delete</button>
+</div>
+</div>
+
+<script>
+    function getSelectedId() {
+        var checked = document.querySelector('.rowCheck:checked');
+        if (!checked) {
+            alert("Select a project");
+            return null;
+        }
+        return checked.value;
+    }
+
+    function addProject() {
+        window.location.href = '/Projects/Create';
+    }
+
+    function editProject() {
+        var id = getSelectedId();
+        if (id) window.location.href = '/Projects/Edit/' + id;
+    }
+
+    function DetailsProject() {
+        var id = getSelectedId();
+        if (id) window.location.href = '/Projects/Details/' + id;
+    }
+
+
+    function deleteProject() {
+        var id = getSelectedId();
+        if (id) window.location.href = '/Projects/Delete/' + id;
+    }
+</script>

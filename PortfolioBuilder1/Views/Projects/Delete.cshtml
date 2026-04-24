@@ -1,0 +1,43 @@
+﻿@model PortfolioBuilder1.Models.Project
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+@* <h2>Delete Project</h2> *@
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h2>Delete User</h2>
+                </div>
+                <h4>Are you sure you want to delete this?</h4>
+
+@* <div class="alert alert-danger">
+    Are you sure you want to delete this project?
+</div> *@
+                <div class="card-body">
+<div class="card p-3">
+
+    <p><b>Project Name:</b> @Model.ProjectName</p>
+    <p><b>Description:</b> @Model.Description</p>
+
+</div>
+
+<form asp-action="Delete" method="post">
+                        @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

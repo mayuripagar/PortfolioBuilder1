@@ -1,0 +1,40 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    height: 90vh;
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+}
+
+.btn-light {
+    border-radius: 30px;
+    font-weight: 600;
+}

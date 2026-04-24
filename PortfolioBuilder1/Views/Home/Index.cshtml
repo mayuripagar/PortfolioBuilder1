@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section d-flex align-items-center text-center text-white">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Build Your Professional Portfolio</h1>
+        <p class="lead mt-3">Create and manage your portfolio easily with our builder.</p>
+
+        <a asp-controller="Dashboard" asp-action="Index"
+           class="btn btn-light btn-lg mt-4 px-5">
+            Get Started
+        </a>
+    </div>
+</section>
+
+
+@* @{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to My Portfolio</h1> *@
+    @* <p class="lead">ASP.NET Core MVC Portfolio Project</p> *@
+@* </div> *@
+
+
+
+@* @model IEnumerable<PortfolioBuilder1.Models.Skill>
+
+@{
+    ViewData["Title"] = "Skills";
+}
+
+<h2 class="mb-4">My Skills</h2>
+
+<a asp-action="Create" class="btn btn-success mb-3">+ Add Skill</a>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">@item.SkillName</h5>
+                    <p class="card-text">
+                        Skill Level: <strong>@item.SkillLevel%</strong>
+                    </p>
+
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div> *@

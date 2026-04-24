@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PortfolioBuilder1.Models.User>
+
+@{
+    ViewData["Title"] = "Users List";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center">Users</h2>
+
+    <!-- Scrollable Table Area -->
+    <div style="height:350px; overflow-y:auto; border:1px solid #ccc;">
+        <table class="table table-bordered table-hover text-center">
+
+            <thead style="position:sticky; top:0; background:#212529; color:white;">
+                <tr>
+                    <th> Select</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    @* <th>Password</th> *@
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="rowCheck" value="@item.Id" />
+                        </td>
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        @* <td>@item.Password</td> *@
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div> 
+        @* <a href="/Users/Create" class="btn btn-primary">Add</a>
+
+        <button class="btn btn-warning" onclick="editUser()">Edit</button>
+
+        <button class="btn btn-info" onclick="detailsUser()">View</button>
+
+        <button class="btn btn-danger" onclick="deleteUser()">Delete</button> *@
+    <div class="d-flex justify-content-center mt-3 gap-2">
+        <a href="/Users/Create" class="btn btn-primary">Add</a>
+        <button class="btn btn-warning" onclick="editUser()">Edit</button>
+        <button class="btn btn-info" onclick="detailsUser()">View</button>
+        <button class="btn btn-danger" onclick="deleteUser()">Delete</button>
+    </div>
+      
+
+    </div>
+@* </div> *@
+
+@section Scripts {
+    <script>
+        // Collect selected checkbox values (user Ids)
+        function getSelectedIds() {
+            return Array.from(document.querySelectorAll('.rowCheck:checked')).map(cb => cb.value);
+        }
+
+        function editUser() {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { alert('Please select a user to edit.'); return; }
+            if (ids.length > 1) { alert('Please select only one user to edit.'); return; }
+            window.location.href = '/Users/Edit/' + encodeURIComponent(ids[0]);
+        }
+
+        function detailsUser() {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { alert('Please select a user to view details.'); return; }
+            if (ids.length > 1) { alert('Please select only one user to view details.'); return; }
+            window.location.href = '/Users/Details/' + encodeURIComponent(ids[0]);
+        }
+
+        function deleteUser() {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { alert('Please select a user to delete.'); return; }
+            if (ids.length > 1) { alert('Please select only one user to delete.'); return; }
+            if (!confirm('Are you sure you want to delete the selected user?')) return;
+            window.location.href = '/Users/Delete/' + encodeURIComponent(ids[0]);
+        }
+    </script>
+}

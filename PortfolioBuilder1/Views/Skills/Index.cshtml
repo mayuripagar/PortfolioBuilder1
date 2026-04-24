@@ -1,0 +1,107 @@
+﻿@model IEnumerable<PortfolioBuilder1.Models.Skills>
+
+
+<div class="container mt-4">
+
+    <h2 class="text-center">Skill</h2>
+
+    <!-- Scrollable Table Area -->
+    <div style="height:350px; overflow-y:auto; border:1px solid #ccc;">
+        <table class="table table-bordered table-hover text-center">
+
+            <thead style="position:sticky; top:0; background:#212529; color:white;">
+   
+        <tr>
+            <th>Select</th>
+            <th>Skill</th>
+            <th>Level</th>
+            <th>User</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" class="rowCheck" value="@item.Id" />
+                </td>
+                <td>@item.SkillName</td>
+                <td>@item.SkillLevel</td>
+                <td>@item.User?.FullName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3 gap-2">
+    <button onclick="addSkill()" class="btn btn-primary">Add</button>
+    <button onclick="editSkill()" class="btn btn-warning">Edit</button>
+    <button onclick="deleteSkill()" class="btn btn-danger">Delete</button>
+    <button onclick="detailSkill()" class="btn btn-danger">Detail</button>
+</div> 
+    </div>
+
+
+<script>
+    // Generate correct base URLs from routes (controller = "Skill")
+    var createUrl = '@Url.Action("Create", "Skills")';
+    var editUrlBase = '@Url.Action("Edit", "Skills")';
+    var deleteUrlBase = '@Url.Action("Delete", "Skills")';
+     var detailUrlBase = '@Url.Action("Details", "Skills")';
+
+    function getSelectedId() {
+        var checked = document.querySelector('.rowCheck:checked');
+        if (!checked) {
+            alert("Select a skill");
+            return null;
+        }
+        return checked.value;
+    }
+
+    function addSkill() {
+        window.location.href = createUrl;
+    }
+
+    function editSkill() {
+        var id = getSelectedId();
+        if (id) window.location.href = editUrlBase + '/' + id;
+    }
+
+    function deleteSkill() {
+        var id = getSelectedId();
+        if (id) window.location.href = deleteUrlBase + '/' + id;
+    }
+     function detailSkill() {
+        var id = getSelectedId();
+        if (id) window.location.href = detailUrlBase + '/' + id;
+    }
+</script>
+
+@* <script>
+
+    function getSelectedId() {
+        var checked = document.querySelector('.rowCheck:checked');
+        if (!checked) {
+            alert("Select a skill");
+            return null;
+        }
+        return checked.value;
+    }
+
+    function addSkill() {
+        window.location.href = '/Skills/Create';
+    }
+
+    function editSkill() {
+        var id = getSelectedId();
+        if (id) window.location.href = '/Skills/Edit/' + id;
+    }
+
+    function deleteSkill() {
+        var id = getSelectedId();
+        if (id) window.location.href = '/Skills/Delete/' + id;
+    }
+
+</script> *@

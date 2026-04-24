@@ -1,0 +1,124 @@
+﻿@model PortfolioBuilder1.Models.Skills
+
+@{
+    ViewData["Title"] = "Edit Skill";
+}
+
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h4>Edit Skill</h4>
+                </div>
+
+                <div class="card-body">
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="SkillName" class="form-label"></label>
+        <input asp-for="SkillName" class="form-control" />
+        <span asp-validation-for="SkillName" class="text-danger"></span>
+    </div>
+    @* <div class="mb-3">
+        <label asp-for="SkillLevel" class="form-label">Leve;</label>
+        <input asp-for="SkillLevel" class="form-control" />
+        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+    </div> *@
+    @* <div class="mb-3">
+        <label asp-for="UserId" class="form-label"></label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div> *@
+
+    <div class="mb-3">
+        <label asp-for="SkillLevel" class="form-label"></label>
+        <select asp-for="SkillLevel" class="form-select">
+            <option value="">-- Select level --</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Expert">Expert</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="UserId" class="form-label"></label>
+        <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users">
+            <option value="">-- Select user --</option>
+        </select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+@* @model PortfolioBuilder1.Models.Skills
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white">
+                    <h4>Edit User</h4>
+                </div>
+
+                <div class="card-body">
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Skill Name</label>
+        <input asp-for="SkillName" class="form-control" />
+    </div>
+
+    <div>
+        <label>Level</label>
+        <input asp-for="SkillLevel" class="form-control" />
+    </div>
+
+    <div>
+        <label>User Id</label>
+        <input asp-for="UserId" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+</div>
+                </div>
+            </div>
+        </div>
+    </div> *@
